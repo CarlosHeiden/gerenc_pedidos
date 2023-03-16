@@ -19,7 +19,7 @@ from pedidos.views import PedidoViewSet
 
 
 urlpatterns = [
-    path('pedidos/v1/',include('pedidos.urls', namespace= 'pedidos')),
-    path('pedidos-auth/', include('rest_framework.urls', namespace= 'rest_framework')),
+    path('api/v1/',include('pedidos.urls', namespace= 'pedidos')),
+    path('api/auth/', include('rest_framework.urls', namespace= 'rest_framework')),
     path('admin/', admin.site.urls),
 ]
