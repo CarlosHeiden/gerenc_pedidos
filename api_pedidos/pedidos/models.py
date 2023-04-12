@@ -1,18 +1,14 @@
 from django.db import models
 
+
 class Pedido(models.Model):
-    nome_cliente = models.CharField(max_length=80)
-    data_pedido = models.DateTimeField()
-    valor_total = models.DecimalField(max_digits=10, decimal_places=2)
+    nome_cliente = models.CharField(max_length= 100, default=None)
+    data_pedido = models.DateField(default=None)
+    nome_produto = models. TextField(default=None)
+    quantidade = models.IntegerField(default=0)
+    vl_unitario = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    valor_total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
-    def __str__(self):
-        return self.nome_cliente
-
-class ItensPedido(models.Model):
-    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
-    nome_item = models.CharField(max_length=70)
-    quantidade = models.IntegerField()
-    valor_unitario = models.DecimalField(max_digits=10, decimal_places=2)
-
-    def __str__(self):
-        return self.pedido
+    def save(self, *args, **kwargs):
+        self.valor_total = self.quantidade * self.valor_unitario
+        super(Pedido, self).save(*args, **kwargs)

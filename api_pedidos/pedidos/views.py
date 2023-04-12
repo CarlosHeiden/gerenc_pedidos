@@ -1,10 +1,16 @@
-from django.shortcuts import render
-from .serializers import *
-from rest_framework import viewsets, permissions
-from .models import *
+from rest_framework import viewsets
+from .models import Pedido
+from .serializers import PedidoSerializer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.filters import SearchFilter
 
-# Create your views here.
 class PedidoViewSet(viewsets.ModelViewSet):
     queryset = Pedido.objects.all()
-    serializer_class = PedidoSerializers
-    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = PedidoSerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [SearchFilter]
+    search_fields = ['cliente', 'data_pedido']
+
+    def perform_create(self, serializer):
+        serializer.save()
+

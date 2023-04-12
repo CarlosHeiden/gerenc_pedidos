@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'api_pedidos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'empresa',
+        'NAME': 'apex_empresa',
         'USER': 'carlos',
-        'PASSWORD': 'Ktmsx-350f',
+        'PASSWORD': 'Arthur442017',
         'HOST': 'localhost',
         'PORT': '3306',
     }
