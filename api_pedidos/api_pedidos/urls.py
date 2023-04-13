@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from pedidos import views
 from pedidos.urls import router
+from user.urls import router
+
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', include((router.urls, 'pedidos'))),
+    path('', include((router.urls, 'user'))),
     #path('api/pedidos/',include('pedidos.urls', 'pedidos'), namespace= 'pedido_list_create'),
     #path('api/pedidos/', include('pedidos.urls', 'pedidos'), namespace= 'pedido_retrieve_update_destroy'),
-    path('admin/', admin.site.urls),
-]
+ ]  

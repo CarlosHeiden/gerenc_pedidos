@@ -1,13 +1,12 @@
 from rest_framework import routers
-from . import views
-from pedidos.views import *
+from user.views import *
 
-app_name = 'pedidos'
+app_name = 'user'
 
 router = routers.DefaultRouter()
 
-router.register(r'api/pedidos', PedidoViewSet, basename='pedido_list_create')
-
+router.register(r'api/login', LoginViewSet, basename='Login'),
+router.register(r'api/signup', UserViewSet, basename='Signup')
 #router.register(r'api/pedidos/<int:pk>/', PedidoDetail, basename='pedido_retrieve_update_destroy')
 
 urlpatterns = router.urls
