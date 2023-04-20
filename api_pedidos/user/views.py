@@ -1,6 +1,3 @@
-from django.shortcuts import render
-
-# Create your views here.
 from rest_framework import viewsets
 
 from rest_framework.authtoken.serializers import AuthTokenSerializer
@@ -9,13 +6,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer
 
-
-class LoginViewSet(viewsets.ViewSet):
-
-    serializer_class = AuthTokenSerializer
-
-    def create(self, request, *args, **kwargs):
-        return ObtainAuthToken().as_view()(request=request._request)
+from rest_framework.permissions import IsAuthenticated
 
 
 class UserViewSet(viewsets.ModelViewSet):

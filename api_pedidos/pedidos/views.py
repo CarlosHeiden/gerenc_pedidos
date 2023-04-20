@@ -9,7 +9,7 @@ class PedidoViewSet(viewsets.ModelViewSet):
     serializer_class = PedidoSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
-    search_fields = ['cliente', 'data_pedido']
+    search_fields = ['nome_cliente', 'data_pedido']
 
     def perform_create(self, serializer):
         serializer.save()

@@ -10,5 +10,5 @@ class Pedido(models.Model):
     valor_total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def save(self, *args, **kwargs):
-        self.valor_total = self.quantidade * self.valor_unitario
+        self.valor_total = self.quantidade * self.vl_unitario
         super(Pedido, self).save(*args, **kwargs)
